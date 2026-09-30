@@ -1,0 +1,34 @@
+{
+  "Jaipur": {
+    "days": [
+      {
+        "day": 1,
+        "condition": "Clear & Sunny",
+        "temp": 28.5,
+        "rain_prob": 10,
+        "is_rainy": false,
+        "wind_speed": 11.2,
+        "summary": "Pleasant and clear skies, perfect for outdoor forts and sightseeing."
+      },
+      {
+        "day": 2,
+        "condition": "Rain & Thunderstorm",
+        "temp": 25.0,
+        "rain_prob": 82,
+        "is_rainy": true,
+        "wind_speed": 24.5,
+        "summary": "Monsoon downpours expected from noon; outdoor forts and hill walks discouraged."
+      },
+      {
+        "day": 3,
+        "condition": "Partly Cloudy",
+        "temp": 27.2,
+        "rain_prob": 18,
+        "is_rainy": false,
+        "wind_speed": 14.0,
+        "summary": "Pleasant breeze and light clouds, great for photography and market shopping."
+      }
+    ],
+    "last_updated": "2026-09-30T12:00:00Z"
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "routes": [
+    {
+      "from": "Delhi",
+      "to": "Jaipur",
+      "modes": [
+        {
+          "mode": "train",
+          "service_name": "Vande Bharat / Shatabdi Express (CC)",
+          "cost_per_person": 500,
+          "duration_hr": 3.8,
+          "departure_times": ["06:10", "15:00", "17:40"],
+          "frequency": "Daily",
+          "comfort_rating": 4.5,
+          "notes": "Includes complimentary breakfast/tea, punctual and elderly-friendly."
+        },
+        {
+          "mode": "train",
+          "service_name": "Garib Rath / Superfast Express (3A/Sleeper)",
+          "cost_per_person": 350,
+          "duration_hr": 4.5,
+          "departure_times": ["05:40", "07:30", "14:15", "23:50"],
+          "frequency": "Daily",
+          "comfort_rating": 3.8,
+          "notes": "Budget-friendly reliable option for large groups."
+        },
+        {
+          "mode": "bus",
+          "service_name": "RSRTC Volvo AC Multi-Axle Bus",
+          "cost_per_person": 450,
+          "duration_hr": 5.0,
+          "departure_times": ["Every 30 mins from ISBT Kashmiri Gate / Dhaula Kuan"],
+          "frequency": "High",
+          "comfort_rating": 4.0,
+          "notes": "Delhi-Jaipur Expressway smooth ride with midway food court stop."
+        },
+        {
+          "mode": "cab",
+          "service_name": "Sedan / Ertiga Outstation Cab (Private)",
+          "cost_per_person": 1200,
+          "duration_hr": 4.5,
+          "departure_times": ["Flexible door-to-door"],
+          "frequency": "On-demand",
+          "comfort_rating": 4.8,
+          "notes": "Ideal for families with luggage and elders; door-to-door pickup."
+        }
+      ]
+    },
+    {
+      "from": "Jaipur",
+      "to": "Delhi",
+      "modes": [
+        {
+          "mode": "train",
+          "service_name": "Ajmer Shatabdi / Vande Bharat",
+          "cost_per_person": 500,
+          "duration_hr": 3.9,
+          "departure_times": ["07:55", "15:45", "18:00"],
+          "frequency": "Daily",
+          "comfort_rating": 4.5,
+          "notes": "Fastest return connection back to NDLS/Sarai Rohilla."
+        },
+        {
+          "mode": "bus",
+          "service_name": "RSRTC Super Luxury Express",
+          "cost_per_person": 450,
+          "duration_hr": 5.0,
+          "departure_times": ["Sindhi Camp Bus Stand every 30 mins"],
+          "frequency": "High",
+          "comfort_rating": 4.0,
+          "notes": "Convenient frequent return options."
+        }
+      ]
+    }
+  ],
+  "local_transport": {
+    "Jaipur": {
+      "auto_rickshaw_per_day": 600,
+      "private_e_rickshaw_per_day": 500,
+      "tourist_cab_sedan_per_day": 1500,
+      "tourist_cab_suv_per_day": 2200,
+      "metro_ticket_avg": 25
+    }
+  }
+}

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TravelSaarthi (ट्रैवल सारथी) • Adaptive Travel Planning Agent</title>
+  
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="navbar">
+    <div class="brand-wrapper">
+      <div class="brand-icon">🧭</div>
+      <div>
+        <div class="brand-title">TravelSaarthi (ट्रैवल सारथी)</div>
+        <div class="brand-tagline">Adaptive Travel Agent • Bharat Agentic 2026</div>
+      </div>
+    </div>
+
+    <div class="nav-actions">
+      <div class="status-badge">
+        <span class="pulse-dot"></span>
+        <span>Adaptive Agent Online</span>
+      </div>
+      <button class="btn-ghost" onclick="window.print()" title="Print or Save Itinerary as PDF">🖨️ Export PDF</button>
+      <button class="btn-primary" onclick="triggerScenario('demo')">✨ Run Demo Trip</button>
+    </div>
+  </header>
+
+  <!-- Main Application Grid -->
+  <main class="app-container">
+
+    <!-- LEFT SIDEBAR: Scenarios & Conversational Assistant -->
+    <aside class="sidebar">
+
+      <!-- Hackathon Judging Scenarios -->
+      <section class="card">
+        <div class="card-title">
+          <span>⚡</span>
+          <span>Live Demo Scenarios</span>
+        </div>
+        <div class="scenario-grid">
+          <button class="btn-scenario" onclick="triggerScenario('demo')">
+            <span class="icon">✨</span>
+            <span>3-Day Family</span>
+            <span class="desc">₹15,000 • Delhi to Jaipur</span>
+          </button>
+          <button class="btn-scenario" onclick="triggerScenario('weather')">
+            <span class="icon">🌧️</span>
+            <span>Bad Weather</span>
+            <span class="desc">Simulate Day 2 Rain</span>
+          </button>
+          <button class="btn-scenario" onclick="triggerScenario('delay')">
+            <span class="icon">🚆</span>
+            <span>Train Delay</span>
+            <span class="desc">+2h Inbound delay</span>
+          </button>
+          <button class="btn-scenario" onclick="triggerScenario('budget')">
+            <span class="icon">💰</span>
+            <span>Budget Cut</span>
+            <span class="desc">-₹2,000 adjustment</span>
+          </button>
+        </div>
+        <button class="btn-scenario" style="width: 100%; margin-top: 8px;" onclick="triggerScenario('fatigue')">
+          <span class="icon">😴</span>
+          <span>Traveler Fatigue (Senior Care)</span>
+          <span class="desc">Relaxed pace & extended rest buffers</span>
+        </button>
+      </section>
+
+      <!-- Chat & Clarification Assistant -->
+      <section class="card" style="flex-grow: 1;">
+        <div class="card-title">
+          <span>💬</span>
+          <span>Hinglish Travel Assistant</span>
+        </div>
+        <div class="chat-window">
+          <div class="chat-messages" id="chat-messages-container"></div>
+          <div class="chat-input-wrapper">
+            <input 
+              type="text" 
+              id="chat-input" 
+              class="chat-input" 
+              placeholder="e.g., 3 din, ₹15,000, Delhi se Jaipur, family trip..." 
+              autocomplete="off"
+            />
+            <button id="chat-send-btn" class="btn-primary" style="padding: 10px 14px;">➤</button>
+          </div>
+        </div>
+      </section>
+
+    </aside>
+
+    <!-- CENTER CANVAS: Financial Metrics, Replan Banner, Itinerary Schedule -->
+    <section class="main-canvas">
+
+      <!-- Hero Financial Metrics Grid -->
+      <div class="hero-financial-grid">
+        <div class="metric-box">
+          <div class="label">Total Budget</div>
+          <div class="value" id="metric-total-budget">₹15,000</div>
+          <div class="sub">Allocated Fund</div>
+        </div>
+        <div class="metric-box">
+          <div class="label">Estimated Spent</div>
+          <div class="value" style="color: #38bdf8;" id="metric-estimated-spent">₹13,200</div>
+          <div class="sub">Transport, Stay, Food & Entry</div>
+        </div>
+        <div class="metric-box">
+          <div class="label">Buffer Remaining</div>
+          <div class="value" style="color: #34d399;" id="metric-remaining-buffer">₹1,800</div>
+          <div class="sub">Safety Cushion</div>
+        </div>
+        <div class="metric-box">
+          <div class="label">Utilization</div>
+          <div class="value" style="color: #a855f7;" id="metric-utilization">88%</div>
+          <div class="sub">Budget Guard: Safe</div>
+        </div>
+      </div>
+
+      <!-- Expense Category Breakdown Row -->
+      <div class="expense-pills-row" id="expense-pills-container">
+        <div class="expense-pill">🚆 Transport: <strong>₹2,000</strong></div>
+        <div class="expense-pill">🏨 Stay (2N): <strong>₹4,500</strong></div>
+        <div class="expense-pill">🍛 Dining: <strong>₹3,000</strong></div>
+        <div class="expense-pill">🎟️ Entry Tickets: <strong>₹2,200</strong></div>
+        <div class="expense-pill">🚕 Local Transit: <strong>₹1,500</strong></div>
+      </div>
+
+      <!-- Replan "Why Changed?" Banner (Core Differentiator) -->
+      <div id="replan-banner-container"></div>
+
+      <!-- Day-Wise Itinerary Cards -->
+      <div id="itinerary-container"></div>
+
+    </section>
+
+    <!-- RIGHT PANEL: Geocoded Leaflet Map & Live Trace Logs -->
+    <aside class="right-panel">
+
+      <!-- Interactive Map Card -->
+      <section class="card">
+        <div class="card-title">
+          <span>🗺️</span>
+          <span>Day-Wise Route Map</span>
+        </div>
+        <div id="map-container"></div>
+      </section>
+
+      <!-- Agent Reasoning & Execution Trace -->
+      <section class="card" style="flex-grow: 1;">
+        <div class="card-title">
+          <span>🧠</span>
+          <span>Agent Execution Trace</span>
+        </div>
+        <div class="trace-timeline" id="trace-timeline-container">
+          <div style="font-size: 12px; color: var(--text-muted); text-align: center; padding: 20px;">
+            Ready to trace live tool executions...
+          </div>
+        </div>
+      </section>
+
+    </aside>
+
+  </main>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  
+  <!-- Application JS -->
+  <script src="/static/app.js"></script>
+</body>
+</html>

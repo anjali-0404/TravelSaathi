@@ -1,0 +1,33 @@
+{
+  "cities": {
+    "Jaipur": {
+      "budget": {
+        "tier_name": "Budget Heritage Guest House / Homestay",
+        "price_per_room_night": 1200,
+        "rooms_for_4_people": 2,
+        "total_nightly_estimate": 2400,
+        "sample_names": ["Kalyan Heritage Haveli", "Zostel / Pearl Palace Homestay", "Rawab Heritage Guest House"],
+        "amenities": ["Clean AC rooms", "Free Wi-Fi", "Homestyle breakfast available", "Walking distance to metro/market"],
+        "rating": 4.2
+      },
+      "standard": {
+        "tier_name": "3-Star Boutique Heritage Hotel",
+        "price_per_room_night": 2200,
+        "rooms_for_4_people": 2,
+        "total_nightly_estimate": 4400,
+        "sample_names": ["Hotel Arya Niwas", "Umaid Bhawan Heritage House Hotel", "Shahpura House"],
+        "amenities": ["Air conditioning", "Rooftop dining", "Courtyard garden", "Elevator access", "Room service"],
+        "rating": 4.6
+      },
+      "comfort": {
+        "tier_name": "4-Star Royal Heritage Retreat",
+        "price_per_room_night": 3800,
+        "rooms_for_4_people": 2,
+        "total_nightly_estimate": 7600,
+        "sample_names": ["Alsisar Haveli", "Mandawa Haveli", "The Fern Jaipur"],
+        "amenities": ["Swimming pool", "Multi-cuisine restaurant", "Traditional puppet show", "Spa facilities"],
+        "rating": 4.8
+      }
+    }
+  }
+}
